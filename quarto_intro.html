@@ -72,10 +72,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running Code</a></li>
+  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting">Plotting</a>
+  <ul class="collapse">
+  <li><a href="#installing-and-loading-necessary-packages" id="toc-installing-and-loading-necessary-packages" class="nav-link" data-scroll-target="#installing-and-loading-necessary-packages">Installing and Loading Necessary Packages</a></li>
+  <li><a href="#importing-the-data" id="toc-importing-the-data" class="nav-link" data-scroll-target="#importing-the-data">Importing the Data</a></li>
+  <li><a href="#mutating-the-data" id="toc-mutating-the-data" class="nav-link" data-scroll-target="#mutating-the-data">Mutating the Data</a></li>
+  <li><a href="#plotting-1" id="toc-plotting-1" class="nav-link" data-scroll-target="#plotting-1">Plotting</a></li>
+  </ul></li>
+  <li><a href="#resources-used" id="toc-resources-used" class="nav-link" data-scroll-target="#resources-used">Resources Used</a></li>
+  </ul>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://stackoverflow.com/questions/74961045/how-to-change-the-colour-of-a-certain-bar-in-a-bar-chart-in-r"><i class="bi bi-link-45deg"></i>Changing Color of Single Bar</a></li><li><a href="https://stackoverflow.com/questions/28243514/ggplot2-change-title-size"><i class="bi bi-link-45deg"></i>Changing Title Size</a></li><li><a href="https://stackoverflow.com/questions/13297995/changing-font-size-and-direction-of-axes-text-in-ggplot2"><i class="bi bi-link-45deg"></i>Changing Axis Title Size and Rotation</a></li><li><a href="https://stackoverflow.com/questions/14942681/change-size-of-axes-title-and-labels-in-ggplot2"><i class="bi bi-link-45deg"></i>Changing Axis Label Size</a></li></ul></div></nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -123,6 +140,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+</section>
+<section id="plotting" class="level2">
+<h2 class="anchored" data-anchor-id="plotting">Plotting</h2>
+<p>Let’s recreate a plot I made for STAT 266A. In this assignment, I plot the average time added to a full football (soccer) match in the Premier League as a function of the season. The steps are as follows:</p>
+<ul>
+<li>install and load packages</li>
+<li>import dataset</li>
+<li>process/clean the data</li>
+<li>plot the data</li>
+</ul>
+<section id="installing-and-loading-necessary-packages" class="level3">
+<h3 class="anchored" data-anchor-id="installing-and-loading-necessary-packages">Installing and Loading Necessary Packages</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidyverse")</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggplot2")</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggthemes")</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="importing-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="importing-the-data">Importing the Data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"CSE266A_final_data.csv"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 7
+Columns: 2
+$ Season               &lt;chr&gt; "2017/18", "2018/19", "2019/20", "2020/21", "2021…
+$ Average.match.length &lt;chr&gt; "96:22:00", "96:40:00", "97:32:00", "96:34:00", "…</code></pre>
+</div>
+</div>
+<p>We see that the data currently shows the average match length, not the average additional minutes played. Additionally, the match length is stored as a string. We address this issue in the following step.</p>
+</section>
+<section id="mutating-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="mutating-the-data">Mutating the Data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># splitting Average.match.length to integers for minutes and seconds</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>average_time <span class="ot">&lt;-</span> df<span class="sc">$</span>Average.match.length <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  (<span class="cf">function</span>(x) <span class="fu">substr</span>(x,<span class="dv">1</span>,<span class="fu">nchar</span>(x)<span class="sc">-</span><span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  (<span class="cf">function</span>(x) <span class="fu">strsplit</span>(x, <span class="st">":"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  (<span class="cf">function</span>(x) <span class="fu">lapply</span>(x, as.numeric))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Length of match without additional time</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>full_time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">00</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute additional minutes, seconds and store them in new columns</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Average.match.length =</span> <span class="fu">substr</span>(df<span class="sc">$</span>Average.match.length,<span class="dv">1</span>,<span class="fu">nchar</span>(Average.match.length)<span class="sc">-</span><span class="dv">3</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Extra.minutes =</span> (<span class="fu">unlist</span>(average_time) <span class="sc">-</span> full_time)[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">14</span>,<span class="dv">2</span>)]) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Extra.seconds =</span> (<span class="fu">unlist</span>(average_time) <span class="sc">-</span> full_time)[<span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">14</span>,<span class="dv">2</span>)]) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Average.additional.time =</span> Extra.minutes <span class="sc">+</span> Extra.seconds<span class="sc">/</span><span class="dv">60</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Season Average.match.length Extra.minutes Extra.seconds
+1 2017/18                96:22             6            22
+2 2018/19                96:40             6            40
+3 2019/20                97:32             7            32
+4 2020/21                96:34             6            34
+5 2021/22                97:29             7            29
+6 2022/23                98:27             8            27
+7 2023/24               101:39            11            39
+  Average.additional.time
+1                6.366667
+2                6.666667
+3                7.533333
+4                6.566667
+5                7.483333
+6                8.450000
+7               11.650000</code></pre>
+</div>
+</div>
+</section>
+<section id="plotting-1" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-1">Plotting</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot Season on the horizontal axis</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot Average.additional.time on the vertical axis</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">x=</span>Season, <span class="at">y=</span>Average.additional.time)) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">color=</span><span class="st">"black"</span>, <span class="at">show.legend=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> Season <span class="sc">!=</span> <span class="st">"2023/24"</span>)) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"lightblue"</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Average Added Time in Premier League"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Premier League Season"</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Average Time Added (minutes)"</span>) <span class="sc">+</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">20</span>, <span class="at">hjust=</span><span class="fl">0.5</span>, <span class="at">face=</span><span class="st">'bold'</span>),</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>, <span class="at">face=</span><span class="st">'bold'</span>),</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>, <span class="at">face=</span><span class="st">'bold'</span>))</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="quarto_intro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="resources-used" class="level2">
+<h2 class="anchored" data-anchor-id="resources-used">Resources Used</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/74961045/how-to-change-the-colour-of-a-certain-bar-in-a-bar-chart-in-r" class="uri">https://stackoverflow.com/questions/74961045/how-to-change-the-colour-of-a-certain-bar-in-a-bar-chart-in-r</a></li>
+<li><a href="https://stackoverflow.com/questions/28243514/ggplot2-change-title-size" class="uri">https://stackoverflow.com/questions/28243514/ggplot2-change-title-size</a></li>
+<li><a href="https://stackoverflow.com/questions/13297995/changing-font-size-and-direction-of-axes-text-in-ggplot2" class="uri">https://stackoverflow.com/questions/13297995/changing-font-size-and-direction-of-axes-text-in-ggplot2</a></li>
+<li><a href="https://stackoverflow.com/questions/14942681/change-size-of-axes-title-and-labels-in-ggplot2" class="uri">https://stackoverflow.com/questions/14942681/change-size-of-axes-title-and-labels-in-ggplot2</a></li>
+</ul>
 </section>
 
 </main>
