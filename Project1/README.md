@@ -14,8 +14,8 @@ to minimize the error in the model prediction given historical weather
 data. We will implement regression methods and compare their results to
 those of neural networks and discuss the applications of both.
 
-\*\*Goal: Given historical weather data, our goal will be to predict the
-following day’s weather.\*\*
+**Goal: Given historical weather data, our goal will be to predict the
+following day’s weather.**
 
 ## Data
 
