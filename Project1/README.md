@@ -1,5 +1,5 @@
 # Project 1
-Kenneth Wirjadisastra
+
 
 # Weather Prediction Model
 
