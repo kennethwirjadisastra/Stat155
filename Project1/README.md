@@ -24,8 +24,9 @@ in Denver, CO.**
 
 The data was collected at <https://www.ncdc.noaa.gov/cdo-web/datasets>.
 We combine data from four different stations (DEN, APA, Central Park,
-and Denver Water Department). The data is collected daily starting from
-January 01, 2005 until early April 2025.
+and Denver Water Department). The stations in these locations collect
+data daily. For this project, we consider observations from January 01,
+2005 up until the most recent data in early April 2025.
 
 Each dataset contains a slightly different number of columns ranging
 from 17 to 39. Some of the notable variables include precipitation (in),
@@ -132,6 +133,8 @@ found by navigating to the [data subdirectory](./data).
 
 ## Data Dictionary
 
+The data dictionary for the cleaned DEN weather data is as follows:
+
 <table>
 <thead>
 <tr class="header">
@@ -184,4 +187,6 @@ found by navigating to the [data subdirectory](./data).
 </table>
 
 The full data dictionary can be found in the
-[here](data/GSOM_documentation.pdf) in the data subdirectory.
+[here](data/GSOM_documentation.pdf) in the data subdirectory. This
+applies to all datasets and may include variables not present in the
+datasets.
