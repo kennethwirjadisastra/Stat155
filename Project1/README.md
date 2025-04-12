@@ -11,13 +11,14 @@ decisions can be inconsequential (what to wear tomorrow) or significant
 Because of the chaotic nature of the weather, it is difficult to find a
 model that accurately models its time evolution. In this project, we aim
 to minimize the error in the model prediction given historical weather
-data. We will implement a regression (RVM) and compare its results to
-those of neural networks and discuss the applications of both.
+data. We will implement a relevance vector machine (at least that is the
+plan) and compare its results to that of a neural network and discuss
+the applications of both.
 
 **Goal: Given historical weather data, our goal will be to predict the
-following day’s weather. Our model’s goal is to produce sparse and
-interpretable model that uncovers the dynamics of the weather system in
-Denver, CO.**
+following day’s weather. Our model’s goal is to produce <u>sparse and
+interpretable</u> model that uncovers the dynamics of the weather system
+in Denver, CO.**
 
 ## Data
 
@@ -126,6 +127,9 @@ glimpse(df.clean)
     $ WSF2    <dbl> 21.0, 25.9, 36.9, 21.0, 36.0, 15.0, 14.1, 16.1, 31.1, 25.9, 14…
     $ WSF5    <dbl> 25.1, 30.0, 46.1, 23.9, 42.9, 17.0, 15.0, 19.9, 36.0, 32.0, 16…
 
+The rest of the data (both raw and cleaned) and the scripts used maybe
+found by navigating to the [data subdirectory](./data).
+
 ## Data Dictionary
 
 <table>
@@ -179,4 +183,5 @@ glimpse(df.clean)
 </tbody>
 </table>
 
-The full data dictionary can be found in the data subdirectory.
+The full data dictionary can be found in the
+[here](data/GSOM_documentation.pdf) in the data subdirectory.
