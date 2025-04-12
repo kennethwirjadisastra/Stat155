@@ -186,7 +186,7 @@ The data dictionary for the cleaned DEN weather data is as follows:
 </tbody>
 </table>
 
-The full data dictionary can be found in the
+The full data dictionary can be found
 [here](data/GSOM_documentation.pdf) in the data subdirectory. This
 applies to all datasets and may include variables not present in the
 datasets.
