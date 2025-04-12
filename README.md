@@ -1,4 +1,4 @@
-# [Weather Prediction Model](./)
+# Weather Prediction Model
 Kenneth Wirjadisastra
 
 In this project, we train a machine learning model to predict the
@@ -12,8 +12,8 @@ In Project 1, we delimit the problem. This included introducing the
 motivation behind the question and finding data. Once data has been
 obtained, we must clean it before moving on to EDA in Project 2.
 
-## Project 2
+## [Project 2](Project2)
 
-## Project 3
+## [Project 3](Project3)
 
-## Project 4
+## [Project 4](Project4)
