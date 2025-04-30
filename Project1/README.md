@@ -129,7 +129,7 @@ glimpse(df.clean)
     $ TARGET  <dbl> 47, 44, 53, 46, 45, 51, 61, 57, 25, 35, 53, 51, 60, 45, 21, 14…
 
 The rest of the data (both raw and cleaned) and the scripts used maybe
-found by navigating to the [data subdirectory](./data).
+found by navigating to the [raw_data subdirectory](./raw_data).
 
 ## Data Dictionary
 
