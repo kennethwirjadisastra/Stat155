@@ -6,4 +6,3 @@ __pycache__
 *.qmd
 *.html
 **/extra
-**/clean_data
