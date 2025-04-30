@@ -11,9 +11,8 @@ decisions can be inconsequential (what to wear tomorrow) or significant
 Because of the chaotic nature of the weather, it is difficult to find a
 model that accurately models its time evolution. In this project, we aim
 to minimize the error in the model prediction given historical weather
-data. We will implement a relevance vector machine (at least that is the
-plan) and compare its results to that of a neural network and discuss
-the applications of both.
+data. We will implement a regression and compare its results to that of
+a neural network and discuss the applications of both.
 
 **Goal: Given historical weather data, our goal will be to predict the
 following day’s weather. Our model’s goal is to produce <u>sparse and
@@ -55,7 +54,7 @@ library(tidyverse)
     ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
 ``` r
-df.raw <- read.csv("./data/DEN_weather_raw.csv")
+df.raw <- read.csv("./raw_data/DEN_weather_raw.csv")
 glimpse(df.raw)
 ```
 
@@ -102,18 +101,18 @@ glimpse(df.raw)
     $ WT22    <int> NA, NA, 1, 1, 1, NA, NA, NA, NA, 1, 1, 1, NA, 1, 1, NA, NA, NA…
 
 There are a lot of missing values in the dataset. We clean the data
-using the script in the data subdirectory. We removed rows and columns
+using the script in the data sub-directory. We removed rows and columns
 with many NaN values. There are now 6972 rows and 13 columns. This is
 what the data looks like after cleaning.
 
 ``` r
 library(tidyverse)
-df.clean <- read.csv("./data/DEN_weather_clean.csv")
+df.clean <- read.csv("./clean_data/DEN_weather_clean.csv")
 glimpse(df.clean)
 ```
 
-    Rows: 6,972
-    Columns: 13
+    Rows: 6,971
+    Columns: 14
     $ DATE    <chr> "2006-02-01", "2006-02-02", "2006-02-03", "2006-02-04", "2006-…
     $ STATION <chr> "USW00003017", "USW00003017", "USW00003017", "USW00003017", "U…
     $ NAME    <chr> "DENVER INTERNATIONAL AIRPORT, CO US", "DENVER INTERNATIONAL A…
@@ -127,6 +126,7 @@ glimpse(df.clean)
     $ WDF5    <dbl> 30, 310, 340, 140, 10, 110, 220, 330, 40, 360, 300, 20, 210, 6…
     $ WSF2    <dbl> 21.0, 25.9, 36.9, 21.0, 36.0, 15.0, 14.1, 16.1, 31.1, 25.9, 14…
     $ WSF5    <dbl> 25.1, 30.0, 46.1, 23.9, 42.9, 17.0, 15.0, 19.9, 36.0, 32.0, 16…
+    $ TARGET  <dbl> 47, 44, 53, 46, 45, 51, 61, 57, 25, 35, 53, 51, 60, 45, 21, 14…
 
 The rest of the data (both raw and cleaned) and the scripts used maybe
 found by navigating to the [data subdirectory](./data).
@@ -187,6 +187,6 @@ The data dictionary for the cleaned DEN weather data is as follows:
 </table>
 
 The full data dictionary can be found
-[here](data/GSOM_documentation.pdf) in the data subdirectory. This
-applies to all datasets and may include variables not present in the
-datasets.
+[here](raw_data/GSOM_documentation.pdf) in the raw_data sub-directory.
+This applies to all data sets and may include variables not present in
+the data sets.
