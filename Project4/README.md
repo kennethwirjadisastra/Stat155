@@ -10,7 +10,9 @@ data sets, then creating new data sets by imputing with 1) Kalman
 Smoother (KS) 2) Unconditional Mean (UM) and 3) Linear Interpolation
 (LI). After training a model for each data set, we test the model’s
 performance on the true test data set. This process is repeated five
-times, after which we can compare the test RMSE and bias.
+times, after which we can compare the test RMSE and bias. An in depth
+explanation of the methods and process can be found in
+[project4_wirjadisastra_kenneth.pdf](./project4_wirjadisastra_kenneth.pdf)
 
 The data generation, model training, and evaluation are all contained in
-[project4_simulation_wirjadisastra_kenneth.ipynb](project4_simulation_wirjadisastra_kenneth.ipynb).
+[project4_simulation_wirjadisastra_kenneth.ipynb](./project4_simulation_wirjadisastra_kenneth.ipynb).
