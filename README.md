@@ -1,5 +1,4 @@
 # Weather Prediction Model
-Kenneth Wirjadisastra
 
 In this project, we train a machine learning model to predict the
 temperature in Denver, CO based on historical weather data in the area.
