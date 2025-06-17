@@ -1,4 +1,5 @@
 # Weather Prediction Model
+Kenneth Wirjadisastra
 
 In this project, we train a machine learning model to predict the
 temperature in Denver, CO based on historical weather data in the area.
@@ -56,7 +57,7 @@ RNN in PyTorch and evaluate its performance.
 In Project 4, we evaluate how the amount of missing data and the
 imputation methods used impact our model’s performance. We will test
 various amounts of missing data and use techniques such as Kalman
-Smoother, unconditional mean, and linear interpolation to impute the
+Smoother, moving average, and linear interpolation to impute the
 training data to train our model. Then we will test its performance on
 the true test data.
 
@@ -69,10 +70,11 @@ the true test data.
     [Project 1](Project1)
 -   Run
     [`project4_simulation_wirjadisastra_kenneth.ipynb`](Project4/project4_simulation_wirjadisastra_kenneth.ipynb)
+-   Run [`anova.ipynb`](Project4/anova.ipynb)
 
 ## Session Info
 
-\-\-\-\-\-
+------------------------------------------------------------------------
 
 `matplotlib          3.10.1`
 
@@ -92,7 +94,7 @@ the true test data.
 
 `torch               2.7.0`
 
-\-\-\-\-\-
+------------------------------------------------------------------------
 
 `IPython             9.2.0`
 
@@ -100,10 +102,10 @@ the true test data.
 
 `jupyter_core        5.7.2`
 
-\-\-\-\-\-
+------------------------------------------------------------------------
 
 `Python 3.11.1`
 
 `Windows-10-10.0.26100-SP0`
 
-\-\-\-\-\-
+------------------------------------------------------------------------
